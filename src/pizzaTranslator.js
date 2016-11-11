@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {  AppRegistry, Text, TextInput, View, StyleSheet, ListView } from 'react-native';
-import R from 'ramda'; 
+import {  AppRegistry, Text, TextInput, View, StyleSheet, ListView, Navigator } from 'react-native';
+import R from 'ramda';
 
-import { ListViewBasics } from './listViewBasics.js';
+import { ListViewBasics, NavigatorView, MyScene } from './listViewBasics.js';
 import { Header } from './header.js';
 
 
@@ -13,7 +13,6 @@ export class PizzaTranslator extends Component {
     super(props);
     this.state = {text: '', json: ''};
   }
-
 
   async getAllPizza(text) {
     const response = await fetch(url);
@@ -38,6 +37,10 @@ export class PizzaTranslator extends Component {
         <View>
           { this.state.row }
         </View>
+        <View style={styles.viewStyle}>
+          <Text>meu deus</Text>
+          <NavigatorView/>
+        </View>
       </View>
     );
   }
@@ -45,7 +48,7 @@ export class PizzaTranslator extends Component {
 
 const styles = StyleSheet.create({
   viewStyle: {
-    padding: 20
+    height: 100,
   },
   input: {
     height: 40,
@@ -54,5 +57,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 10
-  }
+  },
+  navigator: {
+      }
 });
