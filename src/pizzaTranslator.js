@@ -3,6 +3,7 @@ import {  AppRegistry, Text, TextInput, View, StyleSheet, ListView } from 'react
 import R from 'ramda'; 
 
 import { ListViewBasics } from './listViewBasics.js';
+import { Header } from './header.js';
 
 
 const url = 'http://localhost:8000/pizza';
@@ -19,7 +20,9 @@ export class PizzaTranslator extends Component {
     const json = await response.json();
 
     let result = (text == "" ?  '' : JSON.stringify(json.payload));
-    this.state.row = R.map((x) => this.addRow(x), json.payload);
+    let row = R.map((x) => this.addRow(x), json.payload);
+    this.state.row = (text == "" ?  '' : row);
+    console.log(this.state.row);
     this.setState({json: result});
   }
 
@@ -29,14 +32,12 @@ export class PizzaTranslator extends Component {
 
   render() {
     return (
-      <View style={styles.viewStyle}>
-      <TextInput style={styles.input} placeholder='Type here to translate !' onChangeText={ (text) => this.getAllPizza(text)}/>
-      <Text style={styles.text}>
-      { this.state.json }
-      </Text>
-      <View>
-      { this.state.row }
-      </View>
+      <View >
+        <Header title={ 'MENU' }/>
+        <TextInput style={styles.input} placeholder='Type here to translate !' onChangeText={ (text) => this.getAllPizza(text)}/>
+        <View>
+          { this.state.row }
+        </View>
       </View>
     );
   }
