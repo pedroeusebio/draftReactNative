@@ -3,7 +3,6 @@ import {  AppRegistry, Text, TextInput, View, StyleSheet, ListView, Navigator } 
 import R from 'ramda';
 
 import { ListViewBasics, NavigatorView, MyScene } from './listViewBasics.js';
-import { Header } from './header.js';
 
 
 const url = 'http://localhost:8000/pizza';
@@ -31,15 +30,10 @@ export class PizzaTranslator extends Component {
 
   render() {
     return (
-      <View >
-        <Header title={ 'MENU' }/>
+      <View  style={styles.viewStyle}>
         <TextInput style={styles.input} placeholder='Type here to translate !' onChangeText={ (text) => this.getAllPizza(text)}/>
         <View>
           { this.state.row }
-        </View>
-        <View style={styles.viewStyle}>
-          <Text>meu deus</Text>
-          <NavigatorView/>
         </View>
       </View>
     );
@@ -48,16 +42,15 @@ export class PizzaTranslator extends Component {
 
 const styles = StyleSheet.create({
   viewStyle: {
-    height: 100,
+    flex: 1,
+    backgroundColor: '#ededed',
   },
   input: {
     height: 40,
-    borderColor: '#f00',
-    borderWidth: 1,
   },
   text: {
     padding: 10
   },
   navigator: {
-      }
+  }
 });

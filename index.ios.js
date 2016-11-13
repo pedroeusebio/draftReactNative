@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import { PizzaTranslator } from './src/pizzaTranslator.js';
+import { MenuView } from './src/sideMenu.js';
 
 export default class draftProject extends Component {
   render() {
@@ -53,4 +54,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('draftProject', () => PizzaTranslator);
+AppRegistry.registerComponent('draftProject', () => MenuView);
