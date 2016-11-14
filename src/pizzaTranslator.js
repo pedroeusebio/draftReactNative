@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {  AppRegistry, Text, TextInput, View, StyleSheet, ListView, Navigator } from 'react-native';
+import { List, ListItem } from 'react-native-elements';
 import R from 'ramda';
 
 import { ListViewBasics, NavigatorView, MyScene } from './listViewBasics.js';
@@ -11,30 +12,36 @@ export class PizzaTranslator extends Component {
   constructor(props) {
     super(props);
     this.state = {text: '', json: ''};
+    this.getAllPizza()
   }
 
-  async getAllPizza(text) {
+  async getAllPizza() {
     const response = await fetch(url);
     const json = await response.json();
 
-    let result = (text == "" ?  '' : JSON.stringify(json.payload));
-    let row = R.map((x) => this.addRow(x), json.payload);
-    this.state.row = (text == "" ?  '' : row);
-    console.log(this.state.row);
-    this.setState({json: result});
+    let row = R.map((x) => this.addListItem(x), json.payload);
+    this.setState({content: row});
   }
 
-  addRow(text) {
-      return (<ListViewBasics name={text}/>);
+  addListItem(item) {
+    return(
+      <ListItem
+        key={item.id}
+        title={item.tipo}
+        subtitle={"Pizza de " + item.tipo}
+      />
+    );
   }
 
   render() {
     return (
       <View  style={styles.viewStyle}>
-        <TextInput style={styles.input} placeholder='Type here to translate !' onChangeText={ (text) => this.getAllPizza(text)}/>
-        <View>
-          { this.state.row }
-        </View>
+        <TextInput style={styles.input} placeholder='Type here to translate !' onChangeText={ (text) => this.setState({content:<Text></Text>})}/>
+        <List containerStyle={{marginBottom: 20}}>
+          {
+            this.state.content
+          }
+        </List>
       </View>
     );
   }
@@ -43,7 +50,7 @@ export class PizzaTranslator extends Component {
 const styles = StyleSheet.create({
   viewStyle: {
     flex: 1,
-    backgroundColor: '#ededed',
+    backgroundColor: '#ffeded',
   },
   input: {
     height: 40,
