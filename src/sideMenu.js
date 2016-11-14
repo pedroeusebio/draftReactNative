@@ -31,7 +31,6 @@ export class MenuView extends Component {
       )
       };
     let elements = R.map((x) => listView(x), list);
-    console.log(elements);
     return(
       elements
     );
@@ -48,8 +47,6 @@ export class MenuView extends Component {
         </View>
     );
     const toggleSideMenu = () => {
-      console.log(this.state.toggled);
-      console.log(this);
      this.setState({
       toggled: !this.state.toggled
     });
