@@ -13,8 +13,7 @@ import {
   Image
 } from 'react-native';
 
-import { PizzaTranslator } from './src/pizzaTranslator.js';
-import { MenuView } from './src/sideMenu.js';
+import { MenuView } from './src/containers/sideMenu.js';
 
 export default class draftProject extends Component {
   render() {

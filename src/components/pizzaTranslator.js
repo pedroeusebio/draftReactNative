@@ -3,8 +3,6 @@ import {  AppRegistry, Text, TextInput, View, StyleSheet, ListView, Navigator } 
 import { List, ListItem } from 'react-native-elements';
 import R from 'ramda';
 
-import { ListViewBasics, NavigatorView, MyScene } from './listViewBasics.js';
-
 
 const url = 'http://localhost:8000/pizza';
 

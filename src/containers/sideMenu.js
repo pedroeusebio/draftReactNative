@@ -3,8 +3,8 @@ import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native';
 import { SideMenu, List, ListItem } from 'react-native-elements';
 import R from 'ramda';
 
-import { PizzaTranslator } from './pizzaTranslator.js';
-import { Header } from './header.js';
+import { PizzaTranslator } from '../components/pizzaTranslator.js';
+import { Header } from '../components/header.js';
 
 const list = [
   {index: 0, name: 'Cooperar', subtitle: 'Cooperar'},
