@@ -5,55 +5,28 @@ import R from 'ramda';
 
 import { PizzaMenu } from '../components/pizzaMenu.js';
 import { Header } from '../components/header.js';
+import { SideContent } from '../components/sideContent.js';
 
-const list = [
-  {index: 0, name: 'Cooperar', subtitle: 'Cooperar'},
-  {index: 1, name: 'Doar Objetos', subtitle: 'Doar Objetos'},
-  {index: 2, name: 'Doar Sangue', subtitle: 'Doar Sangue'},
-  {index: 3, name: 'Aderir', subtitle: 'Aderir'},
-
-];
 
 export class MenuView extends Component {
   constructor() {
     super();
     this.state = { toggled: false};
   }
-  menuList(list){
-    const listView = (item) => {
-      return(
-        <ListItem
-          titleStyle={styles.title}
-          key={item.index}
-          title={item.name}
-          subtitle={item.subtitle}
-        />
-      )
-      };
-    let elements = R.map((x) => listView(x), list);
-    return(
-      elements
-    );
+
   }
 
   render() {
-    const MenuComponent = (
-        <View style={styles.menuView}>
-          <List containerStyle={{marginBottom: 20}}>
-            {
-              this.menuList(list)
-            }
-          </List>
-        </View>
-    );
+
     const toggleSideMenu = () => {
      this.setState({
       toggled: !this.state.toggled
     });
     };
+
     return (
       <SideMenu
-      MenuComponent={MenuComponent}
+      MenuComponent={SideContent}
       toggled={this.state.toggled}>
         <View style={{flex: 1}}>
           <Header title={ 'MENU' } trigger={() => toggleSideMenu(this)} />
