@@ -4,6 +4,7 @@ import { SideMenu, List, ListItem } from 'react-native-elements';
 import R from 'ramda';
 
 import { PizzaMenu } from '../components/pizzaMenu.js';
+import { SizeMenu } from '../components/sizeMenu.js';
 import { Header } from '../components/header.js';
 import { SideContent } from '../components/sideContent.js';
 
@@ -14,6 +15,12 @@ export class MenuView extends Component {
     this.state = { toggled: false};
   }
 
+  showMenu() {
+    if(true) {
+      return (<PizzaMenu/>)
+    } else {
+      return (<SizeMenu/>)
+    }
   }
 
   render() {
@@ -30,7 +37,9 @@ export class MenuView extends Component {
       toggled={this.state.toggled}>
         <View style={{flex: 1}}>
           <Header title={ 'MENU' } trigger={() => toggleSideMenu(this)} />
-          <PizzaTranslator/>
+          {
+            this.showMenu()
+          }
         </View>
       </SideMenu>
     )
