@@ -6,7 +6,7 @@ import R from 'ramda';
 
 const url = 'http://localhost:8000/pizza';
 
-export class PizzaTranslator extends Component {
+export class PizzaMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {text: '', json: ''};
@@ -24,9 +24,10 @@ export class PizzaTranslator extends Component {
   addListItem(item) {
     return(
       <ListItem
-        key={item.id}
-        title={item.tipo}
-        subtitle={"Pizza de " + item.tipo}
+      key={item.id}
+      title={item.tipo}
+      subtitle={"Pizza de " + item.tipo}
+      onPress={ () =>  console.log('asdasd')}
       />
     );
   }

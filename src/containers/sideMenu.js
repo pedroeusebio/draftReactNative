@@ -3,7 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native';
 import { SideMenu, List, ListItem } from 'react-native-elements';
 import R from 'ramda';
 
-import { PizzaTranslator } from '../components/pizzaTranslator.js';
+import { PizzaMenu } from '../components/pizzaMenu.js';
 import { Header } from '../components/header.js';
 
 const list = [
