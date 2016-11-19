@@ -6,10 +6,24 @@ import R from 'ramda';
 
 const url = 'http://localhost:8000/pizza';
 
-export class PizzaMenu extends Component {
+const styles = StyleSheet.create({
+  viewStyle: {
+    flex: 1,
+    backgroundColor: '#ffeded',
+  },
+  input: {
+    height: 40,
+  },
+  text: {
+    padding: 10
+  }
+});
+
+
+export default class PizzaMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: '', json: ''};
+    this.state = {};
     this.getAllPizza()
   }
 
@@ -27,15 +41,15 @@ export class PizzaMenu extends Component {
       key={item.id}
       title={item.tipo}
       subtitle={"Pizza de " + item.tipo}
-      onPress={ () =>  console.log('asdasd')}
+      onPress={this.props.increment }
       />
     );
   }
 
   render() {
+    console.log(this.props);
     return (
       <View  style={styles.viewStyle}>
-        <TextInput style={styles.input} placeholder='Type here to translate !' onChangeText={ (text) => this.setState({content:<Text></Text>})}/>
         <List containerStyle={{marginBottom: 20}}>
           {
             this.state.content
@@ -46,17 +60,10 @@ export class PizzaMenu extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  viewStyle: {
-    flex: 1,
-    backgroundColor: '#ffeded',
-  },
-  input: {
-    height: 40,
-  },
-  text: {
-    padding: 10
-  },
-  navigator: {
-  }
-});
+/* export default connect(state => ({
+ *   state: state.count
+ * }),
+ *   (dispatch) => ({
+ *     actions: bindActionCreators(actions, dispatch)
+ *   })
+ *   )(PizzaMenu);*/

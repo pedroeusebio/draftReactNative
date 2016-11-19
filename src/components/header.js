@@ -5,14 +5,12 @@ import Icon from 'react-native-vector-icons/FontAwesome.js';
 
 export class Header extends Component {
   render() {
-    const { trigger, title } = this.props;
-
+    const { triggerLeft, triggerRight, title } = this.props;
     return (
       <View style={styles.header}>
-        <Icon style={styles.iconLeft} name='bars' size={25} color="#ededed" onPress={ () => trigger() }/>
+        <Icon style={styles.iconLeft} name='bars' size={25} color="#ededed" onPress={ () => triggerLeft() }/>
         <Text style={styles.title}>{ title }</Text>
-        <Icon style={styles.iconRight} name='plus' size={25} color="#ededed"/>
-
+        <Icon style={styles.iconRight} name='user' size={25} color="#ededed" onPress={ () => triggerRight() }/>
       </View>
     );
   }
@@ -28,6 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9466',
   },
   iconLeft: {
+    alignSelf: 'flex-start',
     paddingLeft: 10
   },
   iconRight: {
@@ -36,6 +35,6 @@ const styles = StyleSheet.create({
   title: {
     color: '#fff',
     fontSize: 16,
-    alignSelf: 'center'
+    alignSelf: 'flex-end',
   }
 });

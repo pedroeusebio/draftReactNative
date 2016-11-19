@@ -13,7 +13,7 @@ import {
   Image
 } from 'react-native';
 
-import { MenuView } from './src/containers/sideMenu.js';
+import App from './src/containers/app';
 
 export default class draftProject extends Component {
   render() {
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('draftProject', () => MenuView);
+AppRegistry.registerComponent('draftProject', () => App);

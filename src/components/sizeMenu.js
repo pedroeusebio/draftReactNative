@@ -16,7 +16,6 @@ export class SizeMenu extends Component {
   async getAllSize() {
     const response = await fetch(url);
     const json = await response.json();
-    console.log(json.payload);
     let row = R.map((x) => this.addListItem(x), json.payload);
     this.setState({content: row});
   }
@@ -27,7 +26,7 @@ export class SizeMenu extends Component {
       key={item.id}
       title={item.size}
       subtitle={item.radio + "cm de Raio."}
-      onPress={ () => console.log('asdasd') }
+      onPress={ () => console.log(item) }
       />
     );
   }

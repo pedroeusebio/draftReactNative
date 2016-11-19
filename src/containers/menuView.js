@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native';
 import { SideMenu, List, ListItem } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import R from 'ramda';
 
-import { PizzaMenu } from '../components/pizzaMenu.js';
+import PizzaMenu from '../components/pizzaMenu.js';
 import { SizeMenu } from '../components/sizeMenu.js';
 import { Header } from '../components/header.js';
 import { SideContent } from '../components/sideContent.js';
+import * as counterActions from '../actions/counterActions';
 
 
-export class MenuView extends Component {
-  constructor() {
-    super();
+class MenuView extends Component {
+  constructor(props) {
+    super(props);
     this.state = { toggled: false};
+    console.log(this.props);
   }
 
-  showMenu() {
-    if(true) {
-      return (<PizzaMenu/>)
+  showMenu(state, actions) {
+    if(state.count == 0) {
+      return (<PizzaMenu  {...actions}/>)
     } else {
       return (<SizeMenu/>)
     }
   }
 
   render() {
-
+    const { state, actions } = this.props;
     const toggleSideMenu = () => {
-     this.setState({
-      toggled: !this.state.toggled
-    });
+      this.setState({
+        toggled: !this.state.toggled
+      });
     };
 
     return (
@@ -36,9 +41,9 @@ export class MenuView extends Component {
       MenuComponent={SideContent}
       toggled={this.state.toggled}>
         <View style={{flex: 1}}>
-          <Header title={ 'MENU' } trigger={() => toggleSideMenu(this)} />
+          <Header title={ 'MENU' } triggerLeft={() => toggleSideMenu(this)} />
           {
-            this.showMenu()
+            this.showMenu(state, actions)
           }
         </View>
       </SideMenu>
@@ -46,6 +51,13 @@ export class MenuView extends Component {
   }
 }
 
+export default connect (state => ({
+  state: state.counter
+}),
+  (dispatch) => ({
+    actions: bindActionCreators(counterActions, dispatch)
+  })
+  )(MenuView);
 
 const styles = StyleSheet.create({
   menuView: {
