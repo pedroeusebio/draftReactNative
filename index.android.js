@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-import { PizzaTranslator } from './src/pizzaTranslator.js';
+import App from './src/containers/app';
 
 
 export default class draftProject extends Component {
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('draftProject', () => PizzaTranslator);
+AppRegistry.registerComponent('draftProject', () => App);
