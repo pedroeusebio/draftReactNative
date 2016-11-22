@@ -41,7 +41,7 @@ export class LoginMenu extends Component {
 
     return(
     <View style={styles.loginView}>
-      <LinearGradient colors={['#F58843', '#BF675B', '#9F5468']} style={styles.linearGradient}>
+      <LinearGradient colors={['#F58843', '#d57451', '#BF675B', '#9F5468']} style={styles.linearGradient}>
         <View style={styles.logoView}>
           <Image
             style={styles.logo}
